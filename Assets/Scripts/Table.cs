@@ -9,7 +9,8 @@ public class Table : MonoBehaviour
     };
     public FurnitureType type;
     public bool isTaken;
-    public Table() {
+    void Start(){
         isTaken = false;
     }
+
 }
