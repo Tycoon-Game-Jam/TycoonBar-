@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Client : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Client : MonoBehaviour
 
     public Table t;
     float moveSpeed;
-    States actualState;
+    private States actualState;
     private Rigidbody2D myRigid;
 
     void Start()
@@ -25,23 +26,33 @@ public class Client : MonoBehaviour
 
     void Update()
     {
-        actions();
+        StartCoroutine(actions());
     }
 
-    private void actions() {
+    private IEnumerator actions() {
         if (actualState == States.GOTOTABLE) {
-            //t.isTaken = true;
             myRigid.velocity = new Vector2(-moveSpeed,0);
-            if (t.transform.position.x==transform.position.x){
+            //miejsce przy stoliku po lewej
+            if (t.transform.position.x-(t.s.bounds.size.x/2)>=transform.position.x-transform.GetComponent<SpriteRenderer>().bounds.size.x/2){
                 myRigid.velocity = Vector2.zero;
                 actualState = States.DRINKING;
             }
+            yield return new WaitForSeconds(0);
         }
-        if (actualState == States.DRINKING) { 
-        
+        if (actualState == States.DRINKING) {
+            yield return new WaitForSeconds(5);
+            actualState = States.GOHOME;
         }
-        if (actualState == States.GOHOME) { 
-        
+        if (actualState == States.GOHOME){
+            t.isTaken = false;
+            myRigid.velocity = new Vector2(moveSpeed, 0);
+            //granica obrazu
+            if (2*(Camera.main.orthographicSize * Screen.width / Screen.height) <= transform.position.x){
+                Destroy(myRigid);
+                Destroy(gameObject);
+                Destroy(this);
+            }
+            yield return new WaitForSeconds(0);
         }
     }
 }
