@@ -48,12 +48,12 @@ public class GameSingleton : MonoBehaviour
     }
 
     public void virtualWaiter() { //wybiera najbliszy wolny stolik przy ktorym powinien usiasc klient
-        GameObject gObject = Instantiate(client) as GameObject;
+       /* GameObject gObject = Instantiate(client) as GameObject;
         if (NumberOfClients > 0) {
             if()
             clients[0].t = tables[i];
             NumberOfClients--;
-        }
+        }*/
     }
 
      
