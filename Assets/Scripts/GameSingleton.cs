@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameSingleton : MonoBehaviour
 {
-    private static GameSingleton instance = null;
+    public static GameSingleton instance = null;
 
     public int money;
     public uint time; //seconds
@@ -24,14 +24,20 @@ public class GameSingleton : MonoBehaviour
         tables = new Table[50];
         clients = new Client[50];
     }
-    public static GameSingleton getInstance() {
-        if (instance == null) {
-            instance = new GameSingleton();
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
         }
-        return instance;
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
-    public bool bankruptcy() {
+        public bool bankruptcy() {
         return money<-2000;
         //lub zmiana na void i wyswietlenie ekranu z napisem Game Over
     }
