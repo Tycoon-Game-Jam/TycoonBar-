@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class BarAssortment{
+public class BarAssortment : MonoBehaviour
+{
     Sprite texture;
     string name;
     uint price;
