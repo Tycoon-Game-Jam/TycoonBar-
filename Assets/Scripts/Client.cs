@@ -44,7 +44,7 @@ public class Client : MonoBehaviour
             actualState = States.GOHOME;
         }
         if (actualState == States.GOHOME){
-            t.isTaken = false;
+            t.isLeftTaken = false; //tu do poprawy
             myRigid.velocity = new Vector2(moveSpeed, 0);
             //granica obrazu
             if (2*(Camera.main.orthographicSize * Screen.width / Screen.height) <= transform.position.x){

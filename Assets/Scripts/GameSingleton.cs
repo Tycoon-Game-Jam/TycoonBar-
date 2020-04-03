@@ -9,9 +9,8 @@ public class GameSingleton : MonoBehaviour
     public uint time; //seconds
     public uint popularity; //mnoznik, ktory rosnie z czasem i razem z losową wartością od 0.5 do 2 okresli ile osob bedzie w barze
     public uint weeklyFees;
-    public BarAssortment[] foodNDrinks;
-    public Table[] tables;
-    public Client[] clients;
+    public int NumberOfClients;//ilosc klientow na dzis
+
 
 
 
@@ -20,9 +19,7 @@ public class GameSingleton : MonoBehaviour
         time = 88; //godzina 7:00 przy zalożeniu ze doba trwa 5 minut
         popularity = 2;
         weeklyFees = 200;
-        foodNDrinks = new BarAssortment[50];
-        tables = new Table[50];
-        clients = new Client[50];
+        NumberOfClients = 2;
     }
     private void Awake()
     {
@@ -51,12 +48,11 @@ public class GameSingleton : MonoBehaviour
     }
 
     public void virtualWaiter() { //wybiera najbliszy wolny stolik przy ktorym powinien usiasc klient
-        int i = 0;
-        while(clients[0/*klient ktory ostatnio wszedl*/].t==null&&i<tables.Length) {
-            if (!tables[i].isTaken) {
-                clients[0].t = tables[i];
-            }
-            i++;
+        GameObject gObject = Instantiate(client) as GameObject;
+        if (NumberOfClients > 0) {
+            if()
+            clients[0].t = tables[i];
+            NumberOfClients--;
         }
     }
 
