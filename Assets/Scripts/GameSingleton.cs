@@ -55,8 +55,9 @@ public class GameSingleton : MonoBehaviour
     }
 
     void Update(){
-        Debug.Log(tables[0]);
-        Debug.Log(tables[1]);
-        Debug.Log(tables[2]);
+        if (Input.GetKeyDown("space")) {
+            clients[1].t = tables[2];
+            clients[2].t = tables[1];
+        }
     }
 }
