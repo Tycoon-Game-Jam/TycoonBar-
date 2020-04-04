@@ -18,7 +18,6 @@ public class Client : MonoBehaviour
 
     void Start()
     {
-        t = GameObject.Find("table").GetComponent<Table>();
         GameObject.Find("ImmortalObject").GetComponent<GameSingleton>().clients.Add(this);
         moveSpeed = 100f;
         actualState = States.GOTOTABLE;

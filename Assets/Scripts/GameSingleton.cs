@@ -55,8 +55,7 @@ public class GameSingleton : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetKeyDown("space")) {
-            clients[1].t = tables[2];
+        if (!tables[1].isLeftTaken) {
             clients[2].t = tables[1];
         }
     }
