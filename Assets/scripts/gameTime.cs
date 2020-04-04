@@ -18,7 +18,7 @@ public class GameTime : MonoBehaviour
     float dayNormalized;
     float minutesPerHour = 60f;
     float hoursPerDay = 24f;
-    
+    float newweeks;
    
 
     private const float REAL_SECONDS_PER_INGAME_DAY = 2F;
