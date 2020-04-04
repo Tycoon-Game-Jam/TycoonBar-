@@ -18,6 +18,7 @@ public class GameTime : MonoBehaviour
     float dayNormalized;
     float minutesPerHour = 60f;
     float hoursPerDay = 24f;
+    
    
 
     private const float REAL_SECONDS_PER_INGAME_DAY = 2F;
@@ -39,14 +40,16 @@ public class GameTime : MonoBehaviour
         day += Time.deltaTime / REAL_SECONDS_PER_INGAME_DAY;
         week += Time.deltaTime / REAL_SECONDS_PER_INGAME_WEEK;
         float dayNormalized = day % 1f;
-      
+        int singleWeek = (int)week;
         
        // Debug.Log(dayNormalized);
         string dayString = Mathf.Floor(day).ToString();
-       
+            
         hoursString = Mathf.Floor(dayNormalized * hoursPerDay).ToString();
         
         minutesString = Mathf.Floor(((dayNormalized * hoursPerDay) % 1f) * minutesPerHour).ToString("00");
+       // Debug.Log((int)day);
+        
        
         
 
@@ -62,6 +65,10 @@ public class GameTime : MonoBehaviour
     public int GetWeek()
     {
         return (int)week;
+    }
+    public int GetDay()
+    {
+        return (int)day;
     }
     public void setTimerMinutes(int now)
     {
