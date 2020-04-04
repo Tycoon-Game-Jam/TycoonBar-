@@ -6,7 +6,7 @@ public class Client : MonoBehaviour
     public enum States{
         GOTOTABLE, DRINKING, GOHOME
     }
-    public enum walkDirection { 
+    public enum WalkDirection { 
         LEFT, RIGHT,
         UP, DOWN//(te sa nieistotne dla modeli graficznych)
     }

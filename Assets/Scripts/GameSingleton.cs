@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameSingleton : MonoBehaviour
@@ -9,13 +10,15 @@ public class GameSingleton : MonoBehaviour
     public uint time; //seconds
     public uint popularity; //mnoznik, ktory rosnie z czasem i razem z losową wartością od 0.5 do 2 okresli ile osob bedzie w barze
     public uint weeklyFees;
-   
+    public List<Table> tables;
 
-    private GameSingleton() {
+    private GameSingleton()
+    {
         money = 5000; //przykladowa startowa wartosc;
         time = 88; //godzina 7:00 przy zalożeniu ze doba trwa 5 minut
         popularity = 2;
         weeklyFees = 200;
+        tables = new List<Table>();
     }
     private void Awake()
     {
@@ -30,21 +33,24 @@ public class GameSingleton : MonoBehaviour
         }
     }
 
-        public bool bankruptcy() {
-        return money<-2000;
+    public bool bankruptcy()
+    {
+        return money < -2000;
         //lub zmiana na void i wyswietlenie ekranu z napisem Game Over
     }
 
-    public void win() {
-        
+    public void win()
+    {
+
     }
 
-    public bool canYouBuyIt(int price) {
+    public bool canYouBuyIt(int price)
+    {
         return price < money;
     }
-     
-    /*// Start is called before the first frame update
+
     void Start(){}
-    // Update is called once per frame
-    void Update(){}*/
+
+    void Update(){
+    }
 }
