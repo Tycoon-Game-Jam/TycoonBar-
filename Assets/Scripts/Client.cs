@@ -18,7 +18,7 @@ public class Client : MonoBehaviour
 
     void Start()
     {
-        //t = null;
+        t = GameObject.Find("table").GetComponent<Table>();
         moveSpeed = 100f;
         actualState = States.GOTOTABLE;
         myRigid = GetComponent<Rigidbody2D>();
