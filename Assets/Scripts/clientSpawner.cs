@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ClientSpawner : MonoBehaviour
 {
@@ -21,8 +19,7 @@ public class ClientSpawner : MonoBehaviour
     }
     public void virtualWaiter(){ //trzeba dodac by wybieral najbliszy wolny stolik przy ktorym powinien usiasc klient
         if (NumberOfClients>CltnsPassed) {
-            GameObject gObject = new GameObject();
-            gObject = Instantiate(cPrefab) as GameObject;
+            GameObject gObject = Instantiate(cPrefab) as GameObject;
             gObject.transform.position = spawner.transform.position;
             CltnsPassed++;
         }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameSingleton : MonoBehaviour
 {
@@ -11,6 +10,7 @@ public class GameSingleton : MonoBehaviour
     public uint popularity; //mnoznik, ktory rosnie z czasem i razem z losową wartością od 0.5 do 2 okresli ile osob bedzie w barze
     public uint weeklyFees;
     public List<Table> tables;
+    public List<Client> clients;
 
     private GameSingleton()
     {
@@ -19,6 +19,7 @@ public class GameSingleton : MonoBehaviour
         popularity = 2;
         weeklyFees = 200;
         tables = new List<Table>();
+        clients = new List<Client>();
     }
     private void Awake()
     {
@@ -49,8 +50,13 @@ public class GameSingleton : MonoBehaviour
         return price < money;
     }
 
-    void Start(){}
+    void Start(){
+        
+    }
 
     void Update(){
+        Debug.Log(tables[0]);
+        Debug.Log(tables[1]);
+        Debug.Log(tables[2]);
     }
 }
