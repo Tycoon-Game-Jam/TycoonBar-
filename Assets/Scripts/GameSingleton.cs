@@ -7,6 +7,7 @@ public class GameSingleton : MonoBehaviour
     public static GameSingleton instance = null;
 
     public int money;
+    public float REAL_SECONDS_PER_INGAME_DAY;
     public uint time; //seconds
     public uint popularity; //mnoznik, ktory rosnie z czasem i razem z losową wartością od 0.5 do 2 okresli ile osob bedzie w barze
     public uint weeklyFees;
@@ -20,6 +21,7 @@ public class GameSingleton : MonoBehaviour
         time = 88; //godzina 7:00 przy zalożeniu ze doba trwa 5 minut
         popularity = 2;
         weeklyFees = 200;
+        REAL_SECONDS_PER_INGAME_DAY = 2F;
         tables = new Queue<Table>();
         clients = new Queue<Client>();
     }
