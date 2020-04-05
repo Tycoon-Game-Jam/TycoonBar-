@@ -21,7 +21,7 @@ public class GameTime : MonoBehaviour
     float newweeks;
    
 
-    private const float REAL_SECONDS_PER_INGAME_DAY = 2F;
+    private const float REAL_SECONDS_PER_INGAME_DAY = 150F;
     private const float REAL_SECONDS_PER_INGAME_WEEK = REAL_SECONDS_PER_INGAME_DAY * 7;
     void Start()
     {
@@ -49,10 +49,6 @@ public class GameTime : MonoBehaviour
         
         minutesString = Mathf.Floor(((dayNormalized * hoursPerDay) % 1f) * minutesPerHour).ToString("00");
        // Debug.Log((int)day);
-        
-       
-        
-
     }
     public int GetHours()
     {
@@ -85,10 +81,7 @@ public class GameTime : MonoBehaviour
         TimeSpan end = new TimeSpan(22, 0, 0);
         
         TimeSpan ts = new TimeSpan(int.Parse(hoursString), 0,0);
-        
-           
 
-        
     }
     
 }

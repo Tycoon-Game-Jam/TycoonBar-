@@ -63,7 +63,7 @@ public class Client : MonoBehaviour
         if (actualState == States.DRINKING) {
             if (leftOrRight == WhichSit.LEFT) transform.localRotation = Quaternion.Euler(0, 0, 0);
             GetComponent<Animator>().enabled=false;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(20);
             actualState = States.GOHOME;
         }
         if (actualState == States.GOHOME){
