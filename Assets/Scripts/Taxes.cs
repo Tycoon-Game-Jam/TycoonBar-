@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManagment : MonoBehaviour
+public class Taxes : MonoBehaviour
 {
     public GameTime timeScript;
     // Start is called before the first frame update
@@ -15,14 +15,16 @@ public class TimeManagment : MonoBehaviour
    void Update()
     {
         // int hours= timeScript.GetHours();
-
+       
         //Debug.Log(hours);
         Debug.Log(timeScript.GetMinutes());
         if(timeScript.GetDay()%7==0 && timeScript.GetDay() != 0)
         {
-           if(timeScript.GetHours()==12 && timeScript.GetMinutes()==59)
+            
+            if (timeScript.GetHours()==12 )
             {
-                Debug.Log("Płać podatki");
+                GameSingleton.instance.money -= 200;
+
             }
         }
 
