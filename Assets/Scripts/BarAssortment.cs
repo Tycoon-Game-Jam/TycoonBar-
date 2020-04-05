@@ -3,10 +3,11 @@
 public class BarAssortment : MonoBehaviour
 {
     Sprite texture;
-    string name;
+    string nam;
     uint price;
 
-    public BarAssortment(string pathname) { 
+    public BarAssortment(string pathname) {
+        nam = pathname;
         //pobiera prosty plik z nazwą i ceną i ewentualnie tez nazwa pliku z tekstura;
     }
 }

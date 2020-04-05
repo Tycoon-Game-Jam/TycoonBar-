@@ -11,11 +11,13 @@ public class Table : MonoBehaviour
     public bool isLeftTaken; //nie jestem pewny co do tego rozwiazania
     public bool isRightTaken;
     public SpriteRenderer s;
+    public GameObject g;
 
     void Start(){
         isLeftTaken = false;
         isRightTaken = false;
         s = GetComponent<SpriteRenderer>();
+        g.GetComponent<GameSingleton>().tables.Enqueue(this);
     }
 
 }
