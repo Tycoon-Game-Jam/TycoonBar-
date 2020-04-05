@@ -17,7 +17,7 @@ public class Table : MonoBehaviour
         isLeftTaken = false;
         isRightTaken = false;
         s = GetComponent<SpriteRenderer>();
-        g.GetComponent<GameSingleton>().tables.Add(this);
+        g.GetComponent<GameSingleton>().tables.Enqueue(this);
     }
 
 }

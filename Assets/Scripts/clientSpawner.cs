@@ -10,14 +10,14 @@ public class ClientSpawner : MonoBehaviour
     void Start()
     {
         spawner = GetComponent<Transform>();
-        NumberOfClients = 5;
+        NumberOfClients = 7; //DODAJAC 8 lub wiecej reszta staje na tym samym miejscu
     }
 
     void Update()
     {
-        virtualWaiter();
+        que();
     }
-    public void virtualWaiter(){ //trzeba dodac by wybieral najbliszy wolny stolik przy ktorym powinien usiasc klient
+    public void que(){
         if (NumberOfClients>CltnsPassed) {
             GameObject gObject = Instantiate(cPrefab) as GameObject;
             gObject.transform.position = spawner.transform.position;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameSingleton : MonoBehaviour
@@ -9,8 +10,8 @@ public class GameSingleton : MonoBehaviour
     public uint time; //seconds
     public uint popularity; //mnoznik, ktory rosnie z czasem i razem z losową wartością od 0.5 do 2 okresli ile osob bedzie w barze
     public uint weeklyFees;
-    public List<Table> tables;
-    public List<Client> clients;
+    public Queue<Table> tables;
+    public Queue<Client> clients;
 
     private GameSingleton()
     {
@@ -18,8 +19,8 @@ public class GameSingleton : MonoBehaviour
         time = 88; //godzina 7:00 przy zalożeniu ze doba trwa 5 minut
         popularity = 2;
         weeklyFees = 200;
-        tables = new List<Table>();
-        clients = new List<Client>();
+        tables = new Queue<Table>();
+        clients = new Queue<Client>();
     }
     private void Awake()
     {
@@ -50,13 +51,41 @@ public class GameSingleton : MonoBehaviour
         return price < money;
     }
 
+    public void virtualWaiter()
+    {
+        if (clients.Count != 0 && tables.Count != 0)
+        {
+            Client c = clients.Dequeue();
+            Table t = tables.Dequeue();
+
+            if (!t.isLeftTaken)
+            {
+                t.isLeftTaken = true;
+                c.t = t;
+                c.leftOrRight = Client.WhichSit.LEFT;
+                c.actualState = Client.States.GOTOTABLE;
+            }
+            else if (!t.isRightTaken)
+            {
+                t.isRightTaken = true;
+
+                c.t = t;
+                c.leftOrRight = Client.WhichSit.RIGHT;
+                c.actualState = Client.States.GOTOTABLE;
+            }
+            else
+            {
+                clients.Enqueue(c);
+            }
+            tables.Enqueue(t);
+        }
+    }
+
     void Start(){
         
     }
 
     void Update(){
-        if (!tables[1].isLeftTaken) {
-            clients[2].t = tables[1];
-        }
+        virtualWaiter();
     }
 }
