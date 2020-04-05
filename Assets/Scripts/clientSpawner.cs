@@ -10,7 +10,7 @@ public class ClientSpawner : MonoBehaviour
     void Start()
     {
         spawner = GetComponent<Transform>();
-        NumberOfClients = 7; //DODAJAC 8 lub wiecej reszta staje na tym samym miejscu
+        NumberOfClients = 8; //DODAJAC 8 lub wiecej reszta staje na tym samym miejscu
     }
 
     void Update()

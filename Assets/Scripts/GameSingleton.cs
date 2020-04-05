@@ -12,6 +12,7 @@ public class GameSingleton : MonoBehaviour
     public uint weeklyFees;
     public Queue<Table> tables;
     public Queue<Client> clients;
+    public ClientSpawner cSpawner;
 
     private GameSingleton()
     {
@@ -53,36 +54,43 @@ public class GameSingleton : MonoBehaviour
 
     public void virtualWaiter()
     {
-        if (clients.Count != 0 && tables.Count != 0)
-        {
+        if (clients.Count != 0) {
             Client c = clients.Dequeue();
-            Table t = tables.Dequeue();
-
-            if (!t.isLeftTaken)
+            if (tables.Count == 0)
             {
-                t.isLeftTaken = true;
-                c.t = t;
-                c.leftOrRight = Client.WhichSit.LEFT;
-                c.actualState = Client.States.GOTOTABLE;
-            }
-            else if (!t.isRightTaken)
-            {
-                t.isRightTaken = true;
-
-                c.t = t;
-                c.leftOrRight = Client.WhichSit.RIGHT;
-                c.actualState = Client.States.GOTOTABLE;
+                Destroy(c);
+                Destroy(c.gameObject);
             }
             else
             {
-                clients.Enqueue(c);
+                Table t = tables.Dequeue();
+
+                if (!t.isLeftTaken)
+                {
+                    t.isLeftTaken = true;
+                    c.t = t;
+                    c.leftOrRight = Client.WhichSit.LEFT;
+                    c.actualState = Client.States.GOTOTABLE;
+                }
+                else if (!t.isRightTaken)
+                {
+                    t.isRightTaken = true;
+
+                    c.t = t;
+                    c.leftOrRight = Client.WhichSit.RIGHT;
+                    c.actualState = Client.States.GOTOTABLE;
+                }
+                else
+                {
+                    clients.Enqueue(c);
+                }
+                tables.Enqueue(t);
             }
-            tables.Enqueue(t);
         }
     }
 
     void Start(){
-        
+        cSpawner = GameObject.Find("ClientSpawner").GetComponent<ClientSpawner>();
     }
 
     void Update(){
