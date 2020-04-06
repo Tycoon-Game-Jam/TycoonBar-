@@ -835,6 +835,11 @@ PrefabInstance:
       propertyPath: money
       value: 3000
       objectReference: {fileID: 0}
+    - target: {fileID: 8398241807461983825, guid: cf3356f9401e3394baa24d5356f4c441,
+        type: 3}
+      propertyPath: GameObjectTime
+      value: 
+      objectReference: {fileID: 923577258}
     - target: {fileID: 332951118286267988, guid: cf3356f9401e3394baa24d5356f4c441,
         type: 3}
       propertyPath: m_RootOrder
@@ -950,7 +955,7 @@ GameObject:
   - component: {fileID: 1083860813}
   m_Layer: 0
   m_Name: table (1)
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1069,7 +1074,7 @@ GameObject:
   - component: {fileID: 1224925048}
   m_Layer: 0
   m_Name: table (2)
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,8 +12,6 @@ public class GameTime : MonoBehaviour
 
     //public Text timeText;
     string hoursString;
-    int nextday;
-    int nextWeek;
     string minutesString;
     float dayNormalized;
     float minutesPerHour = 60f;
@@ -21,7 +19,7 @@ public class GameTime : MonoBehaviour
     float newweeks;
    
 
-    private const float REAL_SECONDS_PER_INGAME_DAY = 150F;
+    private const float REAL_SECONDS_PER_INGAME_DAY = 5F;
     private const float REAL_SECONDS_PER_INGAME_WEEK = REAL_SECONDS_PER_INGAME_DAY * 7;
     void Start()
     {
@@ -32,8 +30,6 @@ public class GameTime : MonoBehaviour
     void Update()
     {
         setGameTime();
-
-
     }
     public void setGameTime()
     {

@@ -12,7 +12,7 @@ public class ClientSpawner : MonoBehaviour
     {
         CltnsPassed = 1;
         spawner = GetComponent<Transform>();
-        NumberOfClients = 30; //DODAJAC 8 lub wiecej reszta staje na tym samym miejscu
+        NumberOfClients = 5; 
         gameTime = GameObject.Find("TimeManager").GetComponent<GameTime>();
     }
 
@@ -25,13 +25,20 @@ public class ClientSpawner : MonoBehaviour
         }
     }
     public void que(){
-        if (NumberOfClients>CltnsPassed) {
-            if (gameTime.GetHours()== ( CltnsPassed* 24 / NumberOfClients))
+        if (GameObject.FindGameObjectsWithTag("Client").Length <= (GameObject.FindGameObjectsWithTag("Table").Length*2))
+        {
+            if (NumberOfClients > CltnsPassed)
             {
-                GameObject gObject = Instantiate(cPrefab) as GameObject;
-                gObject.transform.position = spawner.transform.position;
-                CltnsPassed++;
+                if (gameTime.GetHours() == (CltnsPassed * 24 / NumberOfClients))
+                {
+                    GameObject gObject = Instantiate(cPrefab) as GameObject;
+                    gObject.transform.position = spawner.transform.position;
+                    CltnsPassed++;
+                }
             }
+        }
+        else {
+            Debug.Log("Za dużo");
         }
     }
 }
