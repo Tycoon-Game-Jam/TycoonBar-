@@ -19,7 +19,7 @@ public class GameTime : MonoBehaviour
     float newweeks;
    
 
-    private const float REAL_SECONDS_PER_INGAME_DAY = 5F;
+    private const float REAL_SECONDS_PER_INGAME_DAY = 100F;
     private const float REAL_SECONDS_PER_INGAME_WEEK = REAL_SECONDS_PER_INGAME_DAY * 7;
     void Start()
     {

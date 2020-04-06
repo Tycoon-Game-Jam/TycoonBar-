@@ -37,35 +37,47 @@ public class Client : MonoBehaviour
     }
 
     private IEnumerator actions() {
+        float x = 0, y = 0;
         if (actualState == States.GOTOTABLE) {
+            x = -moveSpeed * Random.Range(0.5F, 1.7F);
             transform.localRotation = Quaternion.Euler(0, 180, 0);
+
             if (leftOrRight == WhichSit.LEFT)
             {
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
-                myRigid.velocity = new Vector2(-moveSpeed, 0);
                 //miejsce przy stoliku po lewej
                 if (t.transform.position.x - (t.s.bounds.size.x / 2) >= transform.position.x - transform.GetComponent<SpriteRenderer>().bounds.size.x / 2)
                 {
-                    myRigid.velocity = Vector2.zero;
-                    actualState = States.DRINKING;
+                    x = 0;
                 }
             }
             if (leftOrRight == WhichSit.RIGHT)
             {
-                myRigid.velocity = new Vector2(-moveSpeed, 0);
                 //miejsce przy stoliku po prawej
                 if (t.transform.position.x + (t.s.bounds.size.x / 2) >= transform.position.x + transform.GetComponent<SpriteRenderer>().bounds.size.x / 2)
                 {
-                    myRigid.velocity = Vector2.zero;
-                    actualState = States.DRINKING;
+                    x = 0;
                 }
             }
-            yield return new WaitForSeconds(0);
+
+            if (t.transform.position.y + (t.s.bounds.size.y / 2) <= transform.position.y+5)
+            {
+                y = -(moveSpeed/Random.Range(2,6));
+            }
+            else {
+                y = 0;
+            }
+
+
+            myRigid.velocity = new Vector2(x, y);
+            if (x == 0 && y == 0) {
+                actualState = States.DRINKING;
+            }
         }
         if (actualState == States.DRINKING) {
             if (leftOrRight == WhichSit.LEFT) transform.localRotation = Quaternion.Euler(0, 0, 0);
             GetComponent<Animator>().enabled=false;
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(20);
             actualState = States.GOHOME;
             if (!billIsPaid)
             {
@@ -86,7 +98,6 @@ public class Client : MonoBehaviour
                 Destroy(gameObject);
                 Destroy(this);
             }
-            yield return new WaitForSeconds(0);
         }
     }
 }
