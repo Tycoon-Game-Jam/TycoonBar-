@@ -20,6 +20,7 @@ public class Client : MonoBehaviour
     public States actualState;
     private Rigidbody2D myRigid;
     public WhichSit leftOrRight;
+    bool billIsPaid;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class Client : MonoBehaviour
         moveSpeed = 100f;
         actualState = States.WAITING;
         myRigid = GetComponent<Rigidbody2D>();
+        billIsPaid = false;
     }
 
     void Update()
@@ -65,6 +67,11 @@ public class Client : MonoBehaviour
             GetComponent<Animator>().enabled=false;
             yield return new WaitForSeconds(20);
             actualState = States.GOHOME;
+            if (!billIsPaid)
+            {
+                billIsPaid = true;
+                GameObject.Find("ImmortalObject").GetComponent<GameSingleton>().addMoney();
+            }
         }
         if (actualState == States.GOHOME){
             transform.localRotation = Quaternion.Euler(0, 0, 0);

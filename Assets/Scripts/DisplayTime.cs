@@ -16,6 +16,6 @@ public class DisplayTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        datetimeText.text = "Time: " + timeScript.GetHours().ToString() + ":" + timeScript.GetMinutes().ToString() + "weeks: " + timeScript.GetWeek().ToString() + "  days: " + timeScript.GetDay().ToString();
+        datetimeText.text = timeScript.GetWeek().ToString()+" weeks, " + timeScript.GetDay().ToString() +"  days, " + " time: " + timeScript.GetHours().ToString() + ":" + timeScript.GetMinutes().ToString();
     }
 }

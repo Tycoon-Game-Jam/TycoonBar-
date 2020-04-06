@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameSingleton : MonoBehaviour
 {
     public static GameSingleton instance = null;
-
+    public Text textM;
     public int money;
     public float REAL_SECONDS_PER_INGAME_DAY;
     public uint time; //seconds
@@ -13,6 +14,7 @@ public class GameSingleton : MonoBehaviour
     public uint weeklyFees;
     public Queue<Table> tables;
     public Queue<Client> clients;
+
 
     private GameSingleton()
     {
@@ -83,11 +85,20 @@ public class GameSingleton : MonoBehaviour
         }
     }
 
-    void Start(){
-        
+    void Start() {
+
     }
 
-    void Update(){
+    void Update() {
         virtualWaiter();
+        showMoney();
+    }
+
+    public void showMoney(){
+        textM.text = money.ToString()+" $";
+      }
+
+    public void addMoney() {
+        money = money + 50;
     }
 }
